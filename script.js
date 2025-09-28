@@ -7,7 +7,7 @@ const wasItRead = document.querySelector("#was-it-read");
 const buttonAdd = document.querySelector("#button-add")
 const library = document.querySelector("#library");
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, wasItRead) {
     if(!new.target) {
         throw Error("Please use the \"new\" keyword with object constructors!");
     }
@@ -15,23 +15,40 @@ function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = read;
+    this.wasItRead = wasItRead;
 }
 
 function addBookToLibrary() {
-    const a = new Book();
-    myLibrary.push(a);
+    const bookTitle = title.value;
+    const bookAuthor = author.value;
+    const bookPages = pages.value;
+    const bookReadStatus = wasItRead.value;
+
+    const newBook = new Book(bookTitle, bookAuthor, bookPages, bookReadStatus);
+
+    myLibrary.push(newBook);
 }
 
 function printBook() {
-    myLibrary.forEach(Book => {
-        // create div element (whole book)
+    library.innerHTML = "";
+
+    myLibrary.forEach(book => {
+            // create div element (whole book)
         let div = document.createElement("div");
-        library.append(div);
-        let p = document.createElement("p");
-        div.append("p");
-        p.textContent = Book.innerHTML;
-        //give it text content of key:values / single paras?
+        div.classList.add("library");
+
+        let titlePara = document.createElement("p");
+        titlePara.textContent = `title ${book.title}`;
+        let authorPara = document.createElement("p");
+        authorPara.textContent = `author ${book.author}`;
+        let pagesPara = document.createElement("p");
+        pagesPara.textContent = `pages ${book.pages}`;
+        let wasItReadPara = document.createElement("p");
+        wasItReadPara.textContent = `wasItRead ${book.wasItRead}`;
+
+        div.append(titlePara, authorPara, pagesPara, wasItReadPara);
+
+        library.append("div");
     });
 }
 
