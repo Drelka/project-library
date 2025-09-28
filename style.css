@@ -12,5 +12,36 @@ html {
 body {
     height: 100%;
     width: 100%;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
 }
 
+.inputs,
+#library {
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    padding: 25px;
+    margin: 25px;
+    border: 1px solid #000;
+}
+
+.inputs input {
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.inputs h4 {
+    align-self: center;
+    padding-bottom: 10px;
+}
+
+#button-add {
+    align-self: center;
+    padding: 15px;
+    margin-top: 20px;
+    width: 80px;
+    border-radius: 5px;
+}
