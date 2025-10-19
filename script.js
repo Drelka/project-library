@@ -3,9 +3,9 @@ const myLibrary = [];
 const title = document.querySelector("#title");
 const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
-const wasItRead = document.querySelector("#was-it-read");
+const wasItRead = document.querySelector("#read");
 const buttonAdd = document.querySelector("#button-add")
-const library = document.querySelector("#library");
+const library = document.querySelector(".library");
 
 function Book(title, author, pages, wasItRead) {
     if(!new.target) {
@@ -33,7 +33,6 @@ function printBook() {
     library.innerHTML = "";
 
     myLibrary.forEach(book => {
-            // create div element (whole book)
         let div = document.createElement("div");
         div.classList.add("library");
 
@@ -48,7 +47,7 @@ function printBook() {
 
         div.append(titlePara, authorPara, pagesPara, wasItReadPara);
 
-        library.append("div");
+        library.append(div);
     });
 }
 
@@ -57,6 +56,4 @@ buttonAdd.addEventListener("click", (e) => {
     addBookToLibrary();
     console.log(myLibrary);
     printBook();
-})
-
-
+});
